@@ -1,5 +1,4 @@
-using Ifeanyi.Services.productAPI.DbContexts;
-using Microsoft.EntityFrameworkCore;
+using Ifeanyi.Services.productAPI.Extensions;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -7,9 +6,9 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-builder.Services.AddDbContext<ApplicationDbContext>(options =>
- options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+builder.Services.ConfigureSqlContext(builder.Configuration);
+builder.Services.ConfigureAutoMapper();
+
 
 
 var app = builder.Build();
@@ -44,7 +43,7 @@ app.MapGet("/weatherforecast", () =>
 
 app.Run();
 
-internal record WeatherForecast(DateTime Date, int TemperatureC, string? Summary)
+internal record WeatherForecast(DateTime Date, int TemperatureC, string Summary)
 {
     public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
 }

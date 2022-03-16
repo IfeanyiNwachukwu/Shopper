@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Ifeanyi.Services.productAPI.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Ifeanyi.Services.productAPI.DbContexts
 {
@@ -8,5 +9,6 @@ namespace Ifeanyi.Services.productAPI.DbContexts
         {
 
         }
+        public DbSet<Product> Products { get; set; }
     }
 }
