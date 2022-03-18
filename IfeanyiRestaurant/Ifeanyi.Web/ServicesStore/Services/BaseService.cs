@@ -22,11 +22,12 @@ namespace Ifeanyi.Web.ServicesStore.Services
         {
             try
             {
-                var client = _httpClient.CreateClient("IfeanyiAPI");
+                var client = _httpClient.CreateClient("MangoAPI");
                 HttpRequestMessage message = new HttpRequestMessage();
-                message.Headers.Add("Accept", "application/json");
+                message.Headers.Add("Accept","application/json");
                 message.RequestUri = new Uri(apiRequest.Url);
                 client.DefaultRequestHeaders.Clear();
+
                 if (apiRequest.Data != null)
                 {
                     message.Content = new StringContent(JsonConvert.SerializeObject(apiRequest.Data),
@@ -49,6 +50,7 @@ namespace Ifeanyi.Web.ServicesStore.Services
                         message.Method = HttpMethod.Get;
                         break;
                 }
+               
                 apiResponse = await client.SendAsync(message);
 
                 var apiContent = await apiResponse.Content.ReadAsStringAsync();
