@@ -47,7 +47,7 @@ namespace Ifeanyi.Web.ServicesStore.Services
             return await SendAsync<T>(new ApiRequest()
             {
                 ApiType = StaticDetails.ApiType.GET,
-                Url = StaticDetails.ProductAPIBase + "/api/products/"+id,
+                Url = StaticDetails.ProductAPIBase + $"/api/products/{id}",
                 AccessToken = ""
             });
         }
@@ -57,9 +57,10 @@ namespace Ifeanyi.Web.ServicesStore.Services
             return await SendAsync<T>(new ApiRequest()
             {
                 ApiType = StaticDetails.ApiType.PUT,
+                Data = model ?? null,
                 Url = StaticDetails.ProductAPIBase + "/api/products",
                 AccessToken = ""
-            });
+            }) ;
         }
     }
 }

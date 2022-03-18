@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Services.ProductAPI.Contracts.IRepositoryManager.ProductRepositoryStore;
 using Services.ProductAPI.DbContexts;
 using Services.ProductAPI.Models;
@@ -12,7 +13,7 @@ namespace Services.ProductAPI.RepositoriesManager.ProductRepositoryStore
         {
 
         }
-        public void CreateUpdateProduct(Product product)
+        public void CreateUpdateProduct([FromBody] Product product)
         {
             if (product.ProductId > 0)
             {

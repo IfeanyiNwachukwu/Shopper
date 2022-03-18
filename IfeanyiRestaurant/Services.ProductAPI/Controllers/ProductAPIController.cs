@@ -40,7 +40,7 @@ namespace Services.ProductAPI.Controllers
         }
        
         [HttpGet]
-        [Route("id")]
+        [Route("{id}")]
         public async Task<object> Get(int id)
         {
             try
@@ -99,6 +99,7 @@ namespace Services.ProductAPI.Controllers
         }
 
         [HttpDelete]
+        [Route("{id}")]
         public async Task<object>Delete(int Id)
         {
             try
